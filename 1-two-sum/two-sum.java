@@ -1,7 +1,7 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         int n=nums.length;
-        int[] ans=new int[2];
+        int[] ans= new int[2];
         HashMap<Integer,Integer> mpp= new HashMap<>();
         for(int i=0;i<n;i++){
             int arr=nums[i];
@@ -12,11 +12,8 @@ class Solution {
                 return ans;
             }
             mpp.put(nums[i],i);
-            
         }
         return ans;
-
-
         
     }
 }
