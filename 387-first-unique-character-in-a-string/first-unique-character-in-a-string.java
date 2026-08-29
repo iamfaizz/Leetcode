@@ -1,17 +1,17 @@
 class Solution {
-     public int firstUniqChar(String s) {
-        
-        int ans = Integer.MAX_VALUE;
-        
-        for(char c='a'; c<='z';c++){
-            
-            int index = s.indexOf(c);
-            if(index!=-1&&index==s.lastIndexOf(c)){
-                ans = Math.min(ans,index);
-            }
+    public int firstUniqChar(String s) {
+        int n=s.length();
+        HashMap<Character,Integer> mpp=new HashMap<>();
+        for(char ch: s.toCharArray()){
+            mpp.put(ch,mpp.getOrDefault(ch,0)+1);
         }
+        
+        for(int i=0;i<n;i++){
+            if(mpp.get(s.charAt(i))==1){
+                return i;
+            }
 
-      
-        return ans==Integer.MAX_VALUE?-1:ans;
-    }   
+        }
+        return -1;
+    }
 }
