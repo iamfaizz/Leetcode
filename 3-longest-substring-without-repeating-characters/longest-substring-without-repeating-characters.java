@@ -5,6 +5,7 @@ class Solution {
         int low=0;
         int high=0;
         int maxLen=0;
+
         for(high=0;high<n;high++){
             char c=s.charAt(high);
             if(map.containsKey(c)){
