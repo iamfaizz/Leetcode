@@ -15,7 +15,8 @@ class Solution {
                 arr[s.charAt(low)-'A']--;
                 low++;
             }
-            res=Math.max(res,high-low+1);
+            res=Math.max(res, high-low+1);
+
         }
         return res;
     }
