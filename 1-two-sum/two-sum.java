@@ -7,6 +7,7 @@ class Solution {
         for(int i=0;i<n;i++){
             int arr=nums[i];
             int rem=target-nums[i];
+
             if(map.containsKey(rem)){
                 ans[0]=map.get(rem);
                 ans[1]=i;
