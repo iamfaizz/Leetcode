@@ -9,19 +9,17 @@ class Solution {
                 if(stack.isEmpty()){
                     return false;
                 }
-                    char top=stack.pop();
-                    if(ch==')' && top!='('){
-                        return false;
-                    }
-                    if(ch==']' && top!='['){
-                        return false;
-                    }
-                    if(ch=='}' && top!='{'){
-                        return false;
-                    }
-                
+                char top=stack.pop();
+                if(ch==')' && top!='('){
+                    return false;
+                }
+                if(ch==']' && top!='['){
+                    return false;
+                }
+                if(ch=='}' && top!='{'){
+                    return false;
+                }
             }
-            
         }
         return stack.isEmpty();
     }
