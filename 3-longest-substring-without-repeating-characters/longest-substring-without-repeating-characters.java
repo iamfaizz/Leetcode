@@ -7,11 +7,11 @@ class Solution {
         int maxLen=0;
 
         for(high=0;high<n;high++){
-            char c=s.charAt(high);
-            if(map.containsKey(c)){
-                low=Math.max(low,map.get(c)+1);
+            char ch=s.charAt(high);
+            if(map.containsKey(ch)){
+                low=Math.max(low,map.get(ch)+1);
             }
-            map.put(c,high);
+            map.put(ch,high);
             int len=high-low+1;
             maxLen=Math.max(maxLen,len);
         }
