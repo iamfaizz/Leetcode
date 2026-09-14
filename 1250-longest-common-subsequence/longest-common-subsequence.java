@@ -5,14 +5,13 @@ class Solution {
         int longest=0;
 
         for(char ch:text2.toCharArray()){
-            int curLength=0;
+            int curLen=0;
             for(int i=0;i<dp.length;i++){
-                if(curLength<dp[i]){
-                    curLength=dp[i];
+                if(curLen<dp[i]){
+                    curLen=dp[i];
                 }else if(ch==text1.charAt(i)){
-                    dp[i]=curLength+1;
-                    longest=Math.max(longest,curLength+1);
-
+                    dp[i]=curLen+1;
+                    longest=Math.max(longest,curLen+1);
                 }
             }
         }
