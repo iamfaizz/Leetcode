@@ -7,12 +7,12 @@ class Solution {
         for(int[] pair:prerequisites){
             int course=pair[0];
             int prerequisite=pair[1];
+
             if(adj[prerequisite]==null){
                 adj[prerequisite]=new ArrayList<>();
             }
             adj[prerequisite].add(course);
             indegree[course]++;
-
         }
 
         Queue<Integer> queue=new LinkedList<>();
@@ -34,9 +34,9 @@ class Solution {
                         queue.offer(next);
                     }
                 }
+
             }
         }
         return ans.size()==numCourses;
-
     }
 }
