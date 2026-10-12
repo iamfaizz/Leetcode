@@ -13,31 +13,35 @@
  *     }
  * }
  */
-
 class Solution {
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
-        List<List<Integer>> list = new ArrayList<>();
-        if (root == null) {
-            return list;
+        List<List<Integer>> res=new ArrayList<>();
+        if(root==null){
+            return res;
         }
-        Queue<TreeNode> q = new LinkedList<>();
-        q.add(root);
-        while (!q.isEmpty()) {
-            ArrayList<Integer> temp = new ArrayList<>();
-            int size = q.size();
-            for (int i = 0; i < size; i++) {
-                if (q.peek().left != null) {
-                    q.add(q.peek().left);
+
+        Queue<TreeNode> queue=new ArrayDeque<>();
+        queue.offer(root);
+
+        while(!queue.isEmpty()){
+            int size=queue.size();
+            List<Integer> level=new ArrayList<>();
+
+            for(int i=0;i<size;i++){
+                TreeNode node=queue.poll();
+                level.add(node.val);
+                if(node.left!=null){
+                    queue.offer(node.left);
                 }
-                if (q.peek().right != null) {
-                    q.add(q.peek().right);
+                if(node.right!=null){
+                    queue.offer(node.right);
                 }
-                temp.add(q.peek().val);
-                q.poll();
+                
             }
-            list.add(temp);
+            res.add(level);
+            
         }
-        Collections.reverse(list);
-        return list;
+        Collections.reverse(res);
+        return res;
     }
 }
