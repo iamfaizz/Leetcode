@@ -7,12 +7,32 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class Solution {
+class Solution {
+    TreeNode ans=null;
+    
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root == null || root == p || root == q)  return root;
-        TreeNode left = lowestCommonAncestor(root.left, p, q);
-        TreeNode right = lowestCommonAncestor(root.right, p, q);
-        if(left != null && right != null)   return root;
-        return left != null ? left : right;
+        
+        ans=null;
+        result(root,p,q);
+        return ans;
+    }
+
+    private int result(TreeNode node, TreeNode p, TreeNode q){
+        if(node==null){
+            return 0;
+        }
+
+        int left=result(node.left,p,q);
+        int right=result(node.right,p,q);
+        int self=0;
+        if(node==p || node==q){
+            self=1;
+        }
+        int total=left+right+self;
+        if(total==2 && ans==null){
+            ans=node;
+        }
+        return total;
+
     }
 }
