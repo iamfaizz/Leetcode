@@ -15,7 +15,6 @@
  */
 class Solution {
     public boolean findTarget(TreeNode root, int k) {
-        
         Stack<TreeNode> asc=new Stack<>();
         Stack<TreeNode> desc=new Stack<>();
 
@@ -24,6 +23,7 @@ class Solution {
             asc.push(curr);
             curr=curr.left;
         }
+
         curr=root;
         while(curr!=null){
             desc.push(curr);
@@ -39,9 +39,9 @@ class Solution {
             if(sum==k){
                 return true;
             }else if(sum<k){
-               small=getSmall(asc);
+                small=getSmall(asc);
             }else{
-               big=getBig(desc);
+                big=getBig(desc);
             }
         }
         return false;
@@ -49,32 +49,35 @@ class Solution {
 
     private TreeNode getSmall(Stack<TreeNode> asc){
 
-            if(asc.isEmpty()){
-                return null;
-            }
-            TreeNode small=asc.pop();
-            TreeNode rightChild=small.right;
-            while(rightChild!=null){
-                asc.push(rightChild);
-                rightChild=rightChild.left;
-            }
-            return small;
-        
+        if(asc.isEmpty()){
+            return null;
+        }
+
+        TreeNode small=asc.pop();
+        TreeNode rightChild=small.right;
+
+        while(rightChild!=null){
+            asc.push(rightChild);
+            rightChild=rightChild.left;
+        }
+        return small;
     }
 
-     private TreeNode getBig(Stack<TreeNode> desc){   
-      
-            if(desc.isEmpty()){
-                return null;
-            }
-            TreeNode big=desc.pop();
-            TreeNode leftChild=big.left;
-            while(leftChild!=null){
-                desc.add(leftChild);
-                leftChild=leftChild.right;
-            }
-            return big;
-     }
-        
+    private TreeNode getBig(Stack<TreeNode> desc){
 
+        if(desc.isEmpty()){
+            return null;
+        }
+
+        TreeNode big=desc.pop();
+        TreeNode leftChild=big.left;
+
+        while(leftChild!=null){
+            desc.push(leftChild);
+            leftChild=leftChild.right;
+        }
+        return big;
+    }
+
+    
 }
