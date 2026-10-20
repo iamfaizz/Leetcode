@@ -16,21 +16,20 @@
 class Solution {
     TreeNode prev=null;
     public boolean isValidBST(TreeNode root) {
-    
         return result(root);
     }
 
     private boolean result(TreeNode root){
         if(root==null){
-            return true; 
-        }
-         if(!result(root.left)){
-            return false;
+            return true;
         }
         
+
+        if(!result(root.left)){
+            return false;
+        }
         if(prev==null){
             prev=root;
-            
         }else{
             if(root.val<=prev.val){
                 return false;
@@ -38,6 +37,5 @@ class Solution {
             prev=root;
         }
         return result(root.right);
-
     }
 }
