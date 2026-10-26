@@ -11,7 +11,6 @@ class Solution {
             }
         }
         return true;
-
     }
 
     private boolean dfs(int node, int c, int[][] graph, int[] color){
